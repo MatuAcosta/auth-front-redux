@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { login } from '../features/login/loginSlice';
 import { Link, redirect,Outlet, Navigate } from 'react-router-dom';
 import { Button } from './styles/Button';
-import { FormContainer, StyledLink,Form, FormInput, FormButton } from './styles/Style';
+import { FormContainer, StyledLink,Form, FormInput, FormButton, Container } from './styles/Style';
 const Login = () => {
   
   const [email, setEmail] = useState('');
@@ -25,22 +25,25 @@ const Login = () => {
     )
   }
   return (
-    <FormContainer>
+    <Container>
+      <h1>Login</h1>
+      <FormContainer>
       <Form>
-        <h1>Login</h1>
-        <FormInput>
-          <input placeholder='Email' name="email" type="text" onChange={e => setEmail(e.target.value)}></input>
-        </FormInput>
-        <FormInput>
-          <input placeholder='Password' onChange={e => setPassword(e.target.value)} name="password" type="text"></input>
-        </FormInput>
-        <FormInput>
-          <FormButton  variant='bold' onClick={loginUser}>Enviar</FormButton>
-          <FormButton><StyledLink to={'/register'}> Registrarse</StyledLink></FormButton>
-        </FormInput>
+          <FormInput>
+            <input placeholder='Email' name="email" type="text" onChange={e => setEmail(e.target.value)}></input>
+          </FormInput>
+          <FormInput>
+            <input placeholder='Password' onChange={e => setPassword(e.target.value)} name="password" type="text"></input>
+          </FormInput>
+          <FormInput>
+            <FormButton  variant='bold' onClick={loginUser}>Enviar</FormButton>
+            <FormButton><StyledLink to={'/register'}> Registrarse</StyledLink></FormButton>
+          </FormInput>
       </Form>
-    </FormContainer>
-  
+      </FormContainer>
+
+    </Container>
+
   )
 }
 
