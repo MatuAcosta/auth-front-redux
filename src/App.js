@@ -7,9 +7,9 @@ import { Navigate, Outlet,redirect } from 'react-router-dom';
 
 function App() {
   return (
-    <main>
+    <>
       <Navigate to='/login' replace={true}/>
-    </main>
+    </>
   );
 }
 

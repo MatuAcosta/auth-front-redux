@@ -1,15 +1,23 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../features/register/registerSlice';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [name,setName] = useState('');
     const [password,setPassword] = useState('');
+    const {registered} = useSelector(state => state.register);
     const dispatch = useDispatch();
     const register = e => {
         e.preventDefault();
-        dispatch(createUser({name,email,password}))
+        dispatch(createUser({name,email,password}));
+    }
+
+    if(registered) {
+      return (
+        <Navigate to={'/login'} replace={true}/>
+      )
     }
 
   return (

@@ -4,6 +4,7 @@ const initialState = {
     name: '',
     email: '',
     password: '',
+    registered: false
 }
 
 const urlRegister = 'http://localhost:5000/users/register';
@@ -37,7 +38,10 @@ export const registerSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(createUser.fulfilled, (state,action) => {
-            console.log(action.payload);
+            console.log(action.payload)
+            if(action.payload.statusCode === 201){
+                state.registered = true;
+            }
         })
         .addCase(createUser.rejected, (state,action) => {
             console.log("STATE",state, "ACTION",action)
